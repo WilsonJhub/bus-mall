@@ -5,7 +5,9 @@ console.log('IT\'S ALIVE');
 // <------------------ GLOBAL VARIABLES ------------------>
 
 
-let votingRounds = 3;
+
+let votingRounds = 25;
+
 
 let productArray = [];
 
@@ -16,8 +18,14 @@ let imgOne = document.getElementById('imgOne');
 let imgTwo = document.getElementById('imgTwo');
 let imgThree = document.getElementById('imgThree');
 
-let resultsBtn = document.getElementById('show-results-btn');
-let resultsList = document.getElementById('display-results-list');
+// let resultsBtn = document.getElementById('show-results-btn');
+// let resultsList = document.getElementById('display-results-list');
+
+
+// <------------------ CANVAS ELEMENT FOR CHART ------------------>
+
+let ctx = document.getElementById('myChart').getContext('2d');
+
 
 
 // <------------------ CANVAS ELEMENT FOR CHART ------------------>
@@ -61,12 +69,16 @@ new Product('sweep', 'png');
 console.log(productArray);
 
 
+
 // <------------------ HELPER FUNCTIONS ------------------>
 
 
 function getRandomIndex() {
 
   return Math.floor(Math.random() * productArray.length);
+
+
+
 
 }
 
@@ -102,6 +114,20 @@ renderImgs();
 
 
 
+function renderChart(){
+  let productArray = [];
+  let productVotes = [];
+  let productViews = [];
+
+  for (let i = 0; i < productArray.length; i++){
+    productName.push(productArray[i].productName);
+    productVotes.push(productArray[i].clicks);
+    productViews.push(productArray[i].views);
+  }
+}
+
+
+
 
 // <------------------ EVENT HANDLERS ------------------>
 
@@ -115,6 +141,7 @@ function handleClick(event) {
 
     }
   }
+
   renderImgs();
 
   votingRounds--;
@@ -127,20 +154,57 @@ function handleClick(event) {
 
 }
 
-function handleShowResults() {
-  // if (votingRounds === 0) {
-    for (let i = 0; i < productArray.length; i++) {
-      let li = document.createElement('li');
-      const str = `${productArray[i].productName} had ${productArray[i].views} votes and was selected ${productArray[i].clicks} times.`;
-      li.textContent = (str);
-      resultsList.appendChild(li);
-    }
 
-}
+
+
 
 // <------------------ EVENT LISTENER ------------------>
 
 
 imgContainer.addEventListener('click', handleClick);
-resultsBtn.addEventListener('click', handleShowResults);
+
+
+
+// <------------------ CHART ------------------>
+
+
+let myChartObj = {
+  type: 'bar',
+  data: {
+      labels: productArray,
+      datasets: [{
+          label: 'Number of Votes',
+          data: productVotes,
+          backgroundColor: [
+              'Pink'
+          ],
+          borderColor: [
+              'lightblue'
+          ],
+          borderWidth: 2
+      },
+      {
+        label: 'Number of Views',
+        data: productViews,
+        backgroundColor: [
+            'lightblue'
+        ],
+        borderColor: [
+            'pink'
+        ],
+        borderWidth: 4
+    }]
+  },
+  options: {
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
+}
+
+const myChart = new Chart(ctx, myChartObj);
+
+renderChart();
 
