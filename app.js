@@ -5,7 +5,9 @@ console.log('IT\'S ALIVE');
 // <------------------ GLOBAL VARIABLES ------------------>
 
 
+
 let votingRounds = 25;
+
 
 let productArray = [];
 
@@ -24,6 +26,11 @@ let imgThree = document.getElementById('imgThree');
 
 let ctx = document.getElementById('myChart').getContext('2d');
 
+
+
+// <------------------ CANVAS ELEMENT FOR CHART ------------------>
+
+// let ctx = document.getElementById('myChart').getContext('2d');
 
 
 // <------------------ CONSTRUCTOR ------------------>
@@ -62,12 +69,16 @@ new Product('sweep', 'png');
 console.log(productArray);
 
 
+
 // <------------------ HELPER FUNCTIONS ------------------>
 
 
 function getRandomIndex() {
 
   return Math.floor(Math.random() * productArray.length);
+
+
+
 
 }
 
@@ -102,6 +113,7 @@ function renderImgs() {
 renderImgs();
 
 
+
 function renderChart(){
   let productArray = [];
   let productVotes = [];
@@ -113,6 +125,8 @@ function renderChart(){
     productViews.push(productArray[i].views);
   }
 }
+
+
 
 
 // <------------------ EVENT HANDLERS ------------------>
@@ -141,10 +155,14 @@ function handleClick(event) {
 }
 
 
+
+
+
 // <------------------ EVENT LISTENER ------------------>
 
 
 imgContainer.addEventListener('click', handleClick);
+
 
 
 // <------------------ CHART ------------------>
@@ -189,3 +207,4 @@ let myChartObj = {
 const myChart = new Chart(ctx, myChartObj);
 
 renderChart();
+
