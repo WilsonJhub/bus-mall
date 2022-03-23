@@ -11,6 +11,9 @@ let votingRounds = 25;
 
 let productArray = [];
 
+
+let productVotes = [];
+let productViews = [];
 // <------------------ DOM REFERENCES ------------------>
 
 let imgContainer = document.getElementById('container');
@@ -153,9 +156,6 @@ function handleClick(event) {
   renderImgs();
 
 }
-
-
-
 
 
 // <------------------ EVENT LISTENER ------------------>
