@@ -3,18 +3,25 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1 {
+#header {
   text-align: center;
   font-size: 3em;
   padding: 30px;
+  margin: 200px;
   text-decoration: underline;
 }
 
 main {
   display: grid;
-  grid-template-columns: 4fr 1fr;
-  grid-auto-rows: minmax(200px, 300px);
-  margin: 400px;
+  grid-template-columns: 5fr 1fr;
+  grid-auto-rows: minmax(200px, 200px);
+  margin: 200px;
+  
+}
+
+#show-results-btn{
+  display: flex;
+  float:right
 }
 
 img {
@@ -26,6 +33,7 @@ img {
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
+  
 
 }
 
@@ -38,3 +46,13 @@ main div {
 
 }
 
+#container {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 		
+  grid-auto-rows: minmax(200px, auto);		 
+  row-gap: 1em;					
+  column-gap: 1em; 
+  border: black;
+}
