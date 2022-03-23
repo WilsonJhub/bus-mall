@@ -135,7 +135,7 @@ function handleShowResults() {
       li.textContent = (str);
       resultsList.appendChild(li);
     }
-  // }
+
 }
 
 // <------------------ EVENT LISTENER ------------------>
