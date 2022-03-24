@@ -198,7 +198,7 @@ imgContainer.addEventListener('click', handleClick);
 
 
 
-// <------------------ CHART ------------------>
+//Work on .json
 
 
 
