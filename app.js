@@ -31,12 +31,6 @@ let resultsBtn = document.getElementById('show-results-btn');
 let ctx = document.getElementById('myChart').getContext('2d');
 
 
-
-// <------------------ CANVAS ELEMENT FOR CHART ------------------>
-
-// let ctx = document.getElementById('myChart').getContext('2d');
-
-
 // <------------------ CONSTRUCTOR ------------------>
 
 
@@ -182,8 +176,13 @@ function handleClick(event) {
   votingRounds--;
   if (votingRounds === 0) {
     imgContainer.removeEventListener('click', handleClick);
+    
     renderChart();
+    
+    let strArr = JSON.stringify(productArray);
+    localStorage.setItem('items',strArr);
     return;
+
   }
 
   renderImgs();
